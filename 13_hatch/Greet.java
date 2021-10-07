@@ -1,3 +1,8 @@
+/*John Gupta-She
+APCS
+HW13 -- Where do BigSibs Come From?
+2021-10-06*/
+
 public class Greet {
   public static void main( String[] args ) {
     String greeting;
