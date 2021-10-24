@@ -1,5 +1,9 @@
 /*
-
+John Gupta-She (Eric He, Po)
+APCS
+HW23 -- What Does Equality Look Like?
+2021-10-24
+time spent (outside of class): .4 hours
 */
 
 public class Coin{
@@ -56,7 +60,24 @@ public class Coin{
 		return (UpFace == a.UpFace);
 	}
 
-	public void assignValue(int a){
-		value = a;
+	public void assignValue(String a){
+		if (a == "penny"){
+			value = 1;
+		}
+		if (a == "nickel"){
+			value = 5;
+		}
+		if (a == "dime"){
+			value = 10;
+		}
+		if (a == "quarter"){
+			value = 25;
+		}
+		if (a == "halfdollar"){
+			value = 50;
+		}
+		if (a == "dollar"){
+			value = 100;
+		}
 	}
 }
