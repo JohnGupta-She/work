@@ -1,23 +1,20 @@
 /*
-Triumphant Triangles--Nina Jiang, Jason Zhou, John Gupta-she//Duckies: Miss Alpaca, Tiggy, Po
+John Gupta-She (Roster: Nina Jiang, Jason Zhou Duckies: Miss Alpaca, Tiggy, Po)
 APCS
-HW21: STAtisTically Speaking...
-2021-10-20
-DISCO:
--Math.pow uses double so I need to convert double to int for int geoMean() using (int) Math.round()
--int Math.round() leads to a compilation error: '.class' expected. Putting () around int fixes it
-Q/C/C:
--Since geoMean() uses double, how can I put a double into int geoMean() without an error?
+HW21: STAtisTically Speaking... (Wrote Stats.java)
+2021/10/20
+DISCO: N/A
+Q: Is parsing allowed
 */
-
 public class Stats {
+
 	public static int mean(int a, int b) {
 		int mean = ((a + b)/2);
 		return mean;
 	}
 
 	public static double mean(double a, double b) {
-		double mean = ((a+b)/2);
+		double mean = ((a+b) * 1.0) /2.0;
 		return mean;
 	}
 
@@ -42,8 +39,14 @@ public class Stats {
 	}
 
 	public static int geoMean(int a, int b) {
-		int geoMean = (int) Math.round(Math.pow((a * b), 1/2));
-		return geoMean;
+        int num = a * b;
+        int lowbound = max(a, b) - Math.abs(a - b);
+        int ans = 0;
+        while (lowbound * lowbound <= num) {
+            ans = lowbound;
+            lowbound++;
+        }
+        return ans;
 	}
 
 	public static double geoMean(double a, double b) {
@@ -52,55 +55,31 @@ public class Stats {
 	}
 
 	public static int max(int a, int b, int c) {
-		if (a >= b && b >= c) {
-			return a;
-		} else if (b >= a && b >= c) {
-			return b;
-		} else {
-			return c;
-		}
+        return max(max(a, b), max(b, c));
 	}
 
 	public static double max(double a, double b, double c) {
-		if (a >= b && b >= c) {
-			return a;
-		} else if (b >= a && b >= c) {
-			return b;
-		} else {
-			return c;
-		}
+        return max(max(a, b), max(b, c));
 	}
 
 	public static int geoMean(int a, int b, int c) {
-		int geoMean = (int) Math.round(Math.pow((a * b * c), 1/2));
-		return geoMean;
+        int num = a * b * c;
+        int lowest = max(a, b, c) - max(Math.abs(a - b), Math.abs(a - c), Math.abs(b - c));
+        int ans = 0;
+        while (lowest * lowest * lowest <= num) {
+            ans = lowest;
+            lowest++;
+        }
+        return ans;
 	}
 
 	public static double geoMean(double a, double b, double c) {
-		double geoMean = Math.pow((a * b * c), 1/2);
-		return geoMean;
+        return Math.pow((a*b*c), 1/3);
 	}
 
 	//main method for testing functionality
-	public static void main(String[] args) {
-		System.out.println(Stats.mean(1, 2));
-		System.out.println(Stats.mean(1.0, 2.0));
-
-		System.out.println(Stats.max(1, 10));
-		System.out.println(Stats.max(1, 4.5));
-
-		System.out.println(Stats.geoMean(9, 16));
-		System.out.println(Stats.geoMean(9.0, 16.0));
-
-		System.out.println(Stats.max(1, 2, 3));
-		System.out.println(Stats.max(-1, 0, 3));
-		System.out.println(Stats.max(1, 1, 1));
-
-		System.out.println(Stats.max(1.0, 2.0, 3.0));
-		System.out.println(Stats.max(2.2, 2.2, 2.2));
-		System.out.println(Stats.max(0.0, -4.2, 1.2));
-
-		System.out.println(Stats.geoMean(4, 9, 16));
-		System.out.println(Stats.geoMean(4.0, 9.0, 16.0));
+	public static void main( String[] args ) {
+        System.out.println(geoMean(3, 7, 8));
 	}
-} //end class
+
+}//end class
