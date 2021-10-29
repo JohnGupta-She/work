@@ -1,7 +1,7 @@
 /*
 John Gupta-She (Roster: Julia Kozak, Ziying Jian Duckies: Flopsy, Po, <Ziying Duckie>)
 APCS
-HW26: GCD Three Ways (added GCD in 3 ways)
+HW27: FOR the Love of Strings
 2021/10/27
 DISCO: you have to initialize the value of a string to include it in the update of its value (ex. result = result + <something> won't work otherwise)
        String.substring(firstIndex, lastIndex) does not include the character of index lastIndex
