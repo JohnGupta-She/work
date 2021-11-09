@@ -2,7 +2,7 @@
  * John Gupta-She
  * APCS
  * HW31 -- deploying linear search on Strings, using helper methods
- * 2021-11-04r
+ * 2021-11-08
  * time spent: .5hrs
  *
  * class Pig
