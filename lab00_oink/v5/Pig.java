@@ -1,4 +1,18 @@
-//added scanner and created method that can translate sentences
+/*
+John Gupta-She (Team KLEH: Kevin Li, Eric He)
+APCS
+L00 -- Etterbay Odingcay Oughtray Ollaborationcay
+2021-11-9
+time spent:.5 hours on v5, 5 hours total
+
+DISCO: Helper functions are helpful, keeping things organized helps a ton!
+QCC: N/A
+HOW WE UTILIZED SCANNER DEMO (v4): Experimented with the format of demoscanner.java
+WHAT CAUSES RUNTIME ERROR IN THE SCANNER DEMO: the second System.out.println. When it is removed, the error disappears with it.
+NEW IN v5: Accounts for punctuation in phrases
+*/
+
+//added punctuation checker
 package v5;
 import java.util.Scanner;
 
