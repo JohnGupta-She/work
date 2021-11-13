@@ -9,7 +9,7 @@ time spent:
 public class Loopier{
   private static int[] popArray(int[] a){
     for (int i = 0; i < a.length; i++){
-      a[i] = 2;
+      a[i] = (int) (10 * Math.random());
     }
     return a;
   }
@@ -59,5 +59,9 @@ public class Loopier{
     int[] b = {2, 3, 2, 4, 5};
     System.out.println(strArray(b));
     System.out.println(freq(b, 2));
+    int[] c;
+    c = new int[5];
+    popArray(c);
+    System.out.println(strArray(c));
   }
 }
