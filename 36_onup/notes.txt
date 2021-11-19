@@ -1,0 +1,55 @@
+John Gupta-She
+APCS
+HW36 -- All Quacked Up
+time spent: 
+
+NOTES D.1 Compile-Time Errors:
+
+- fix errors one at a time and then recompile
+- only look at the first error message, it is the only one that is truly reliable
+- pay attention to what the error message says
+- if there is no apparent error exactly where the compiler points to, search other places, typically slightly before
+
+Syntax errors to check for:
+
+- parens
+- upper != lower letters
+- ; placement
+- quotation rules ("" for string, '' for char)
+- matching data types (assignment, inputs and outputs)
+- calling methods from outside the class (use .)
+- static & non-static
+
+If you are way off course:
+
+- make copy of file
+- delete half of it
+- check compilability
+- narrow down search
+
+^ also the optimal way to win "Guess Who" by Mark Rober: https://www.youtube.com/watch?v=FRlbNOno5VA
+
+Important note: the compiler is not always right in its suggestions of debugging, it is just a tool to use as evidence
+
+NOTES D.2 Run-Time Errors:
+
+Hanging:
+
+- likely caused by an infinite loop or recursion
+- add print statements as diagnostics to test what is wrong
+- fix as necessary (use visualizer or trace it on paper if necessary)
+
+Important note: don't add too many print statements, or you will get flooded with output
+		if your print statements aren't working, try using println instead of print
+
+NOTES D.3 Logic Errors:
+
+- if your program isn't working correctly, run a few test cases and hypothesize what is going wrong
+- use the visualizer and trace to gain insight into what your code is doing
+- using print statements are good here too
+
+IF YOU ARE STUCK:
+take a break away from the computer for a bit, come back fresh
+
+IF THAT DID NOT WORK:
+consult help in the form of rubber duckie or some gud fam
