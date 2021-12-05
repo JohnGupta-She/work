@@ -1,7 +1,7 @@
 /*****************************************************
  * Perfect Purple Petunias (John Gupta-She, Lauren Lee, Emily Ortiz)
  * APCS pd08
- * HW41 -- Be Rational
+ * HW42 -- Be More Rational
  * 2021-12-1
  * time spent: 0.5 hrs
  *****************************************************/
@@ -49,59 +49,52 @@ public class Rational{
   }
 
   private void divide(Rational a){
-    if (a.numerator != 0){
-      numerator = numerator * a.denominator;
-      denominator = denominator * a.numerator;
-    } else {
-      System.out.println("Cannot divide by 0.");
-    }
+    numerator = numerator * a.denominator;
+    denominator = denominator * a.numerator;
   }
 
   private void add(Rational a){
-    numerator = numerator * a.denominator + a.numerator * denominator;
-    denominator = denominator * a.denominator;
+    numerator = numerator*a.denominator + a.numerator*denominator;
+    denominator = a.denominator*denominator;
   }
 
   private void subtract(Rational a){
-    numerator = numerator * a.denominator - a.numerator * denominator;
-    denominator = denominator * a.denominator;
+    numerator = numerator*a.denominator - a.numerator*denominator;
+    denominator = a.denominator * denominator;
   }
 
-  private int gcd(){
-    int num = numerator;
-    int den = denominator;
-    while (num != den) {
-      if (num > den) {
-        num = num - den;
-      }
-      else if (den > num) {
-        den = den - num;
-      }
-    }
-    return num;
-  }
-
-  private void reduce() {
-    int gcd = gcd();
-    denominator = denominator / gcd;
-    numerator = numerator / gcd;
-  }
-
-  private int compareTo(Rational a) {
-    int x = numerator * a.denominator;
-    int y = a.numerator * denominator;
-    if (x == y){
-      return 0;
-    }
-    else if (x > y){
-      return 1;
+  private int gcd(int num, int den){
+    if (num == 0){
+      return den;
     }
     else{
-      return -1;
+      while (num != den) {
+        if (num > den) {
+          num = num - den;
+        }
+        else if (den > num) {
+          den = den - num;
+        }
+      }
+      return num;
     }
-
   }
 
+  private void reduce(){
+    int gcd = gcd(numerator, denominator);
+    numerator = numerator / gcd;
+    denominator = denominator / gcd;
+  }
+
+  private int compareTo(Rational a){
+    if (numerator * a.denominator == denominator * a.numerator){
+      return 0;
+    } else if (numerator * a.denominator > denominator * a.numerator){
+      return 1;
+    } else {
+      return -1;
+    }
+  }
 
   public static void main(String[] args){
     System.out.println();
@@ -129,13 +122,22 @@ public class Rational{
     r.add(s);
     System.out.println("value of r after addition: " + r + "...20/32");
     System.out.println("value of s after addition: " + s + "...1/2");
-    System.out.println("gcd of r: " + r.gcd() + "...4");
+    System.out.println("gcd of r: " + r.gcd(r.numerator, r.denominator) + "...4");
+    r.subtract(s);
+    System.out.println("value of r after subtraction: " + r + "...8/64");
+    System.out.println("value of s after subtraction: " + s + "...1/2");
+    System.out.println("gcd of r: " + r.gcd(r.numerator, r.denominator) + "...8");
     r.reduce();
     s.reduce();
-    System.out.println("value of r after reduction: " + r + "...5/8");
+    System.out.println("value of r after reduction: " + r + "...1/8");
     System.out.println("value of s after reduction: " + s + "...1/2");
-    System.out.println("r compared to s: " + r.compareTo(s) + "...1");
-    System.out.println("s compared to r: " + s.compareTo(r) + "...-1");
+    System.out.println("r compared to s: " + r.compareTo(s) + "...-1");
+    System.out.println("s compared to r: " + s.compareTo(r) + "...1");
+    s.numerator = 2;
+    r.numerator = 2;
+    s.denominator = 3;
+    r.denominator = 3;
+    System.out.println("s compared to r: " + s.compareTo(r) + "...0");
 
 /**
     System.out.println("//====================================");
