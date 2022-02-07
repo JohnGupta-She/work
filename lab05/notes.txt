@@ -1,0 +1,26 @@
+Team GigaMarc (John Gupta-She, Faiza Huda, Joshua Gao)
+APCS pd0
+L05 -- pulling it together
+2022-02-03r
+time spent:  .5 hrs outside class, 1.3 hrs in class
+
+
+DISCO
+------------------------------------------------
+* Keys to Success were very useful, especially in class when we were trying to implement the histogram method. Having keys to understand your own thoughts and then to convey it to your team is an extremely valuable asset.
+================================================
+
+
+QCC
+------------------------------------------------
+* For some reason, when we tried to set _frequency to an arraylist with size max(data)+1 using an overloaded constructor, it didn't work as planned, creating an arraylist of size 0 instead. To work around this, we simply added max(data)+1 0's instead, essentially creating an "empty" arraylist of size max(data)+1. 
+* In the vein of the previous comment, a question we have is why didn't the overloaded constructor work? Were we simply using it wrong? And if so, in what way and how can we use it correctly next time?
+================================================
+
+
+MISC
+------------------------------------------------
+* 
+================================================
+
+
