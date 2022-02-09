@@ -2,7 +2,7 @@ John Gupta-She
 APCS
 HW60 -- A Termite is-a Turtle, a Thinker is-a Turtle
 2022-02-08
-time spent: 0.15 hours
+time spent:
 
 DISCO
 * Eventually, the list (or deck of cards) will have to be reconstructed, and while doing so, you can use the special method of putting ordered lists together that maintains orderedness.
