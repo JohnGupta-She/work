@@ -1,0 +1,19 @@
+John Gupta-She
+APCS
+HW60 -- A Termite is-a Turtle, a Thinker is-a Turtle
+2022-02-08
+time spent:
+
+DISCO
+* Eventually, the list (or deck of cards) will have to be reconstructed, and while doing so, you can use the special method of putting ordered lists together that maintains orderedness.
+
+QCC
+* What is the runtime (Big O) of this resortment from start to finish, including splitting the cards up, and reforming them into one deck? (clearly more than 40 minutes real time with real thinkeren)
+
+THINKER FIRMWARE
+Phase 1:
+Upon receiving a deck, split it into two parts and give them to two other thinkeren.
+
+Phase 2 (which we did not get to in class):
+If you did not split a deck into two parts in phase 1, but still have a card (singular) give them back to the person you recieved them from.
+If you receive a deck (can be a single card), merge it with your own deck using the order maintaining merge, then hand the merged deck to who you received a deck from in phase 1.
