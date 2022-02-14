@@ -1,0 +1,68 @@
+Team GigaMarc: Faiza Huda, John Gupta-She, Joshua Gao
+APCS
+L06 -- Read/Review/Expand
+2022-2-12
+time spent: 1.3
+
+DISCO:
+ - the csv file doesn't have enough words donde esta "hate" or "love" those are very essential to reviews
+
+QCC:
+ - Are we supposed to do activity 5
+ - Would add headings to the reviews and adj list files but that would mess it all up...unless theres a way to ignore lines in txt files?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Answers to things~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Activity 1
+
+1. a) sentimentVal( String )
+   b) It requires a String anything else will return a 0
+   c) It returns a double
+
+2. sentimentVal("accused");   -> -1.5
+   sentimentVal("murder");    -> -1.93
+   sentimentVal("frigid");    -> 0.31
+
+3. a) It compiles. You are storing a double val in a double type var.
+   b) It won't compile. You can't store doubles in Strings.
+   c) It won't compile. The method only takes one parameter.
+
+Activity 2
+
+4. The method first takes in a txt file and turns it into a giant String and splits it into separate words
+   by whitespace and stores it into an array. It then iterates through this array and adds up the total sentiment
+   vals for each word and returns that sum.
+
+5. a) The ratings do not make sense because the csv file is lack critical words and their sentiment values such as
+      "kill" and "hate". It also seems to not be able to words in all tenses, only specific ones.
+   b) Add more words and tenses. Interpret expressions with contractions and other punctuation marks.
+
+6. He is doing it all backwards. The logic operator should be ">". Zero is less than 15 meaning in his code it'd
+   get 4 stars when it should be 0 stars.
+
+Activity 3
+
+3. The indexOf methods return the index within a string of the first occurance of the specificied substring.
+   The substring methods return a new string with a substring starting from sepecified indexes. You can use this
+   by finding the indexes of every " " and substringing everything between these indexes. It is necessary to add
+   a zero because of indexing.
+
+5. static methods can't access non static methods. The main method is static, it can't access any non static methods.
+
+6. First you'd have to assign sentiment values to the adjectives. Then program it to search through the csv list to see whether or not the adj is a
+   good or bad thing (pos or neg). Depending on what it is, get a random adj from the corresponding list.
+   If asking for just creating a fake pos or neg review regardless of the og adj then just only access that adjective list
+
+Activity 4
+
+1. To troll someone
+
+2. You're selling something on Amazon and so fake good 5 star reviews
+
+3. Just do everything it already does but also make it take in another parameter. If you specify you want a pos review then the program will only take
+   adjectives from the posadj list.
+
+5. It wouldn't work because oneWord isn't a String. If it is a String var then it would return all the characters after the first character at index 0.
+
+6. Because the words in the csv file don't start with * so you won't be able to find them.
+
+7. Make it only pick adjectives with a sentiment value of over 1
