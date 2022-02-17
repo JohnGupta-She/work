@@ -11,6 +11,7 @@ public class QueenBoard
 
   private int[][] _board;
   private int _size;
+  private int sols;
 
   public QueenBoard( int size )
   {
@@ -29,7 +30,9 @@ public class QueenBoard
    */
   public boolean solve()
   {
-
+    boolean t = solveH(0);
+    System.out.println(sols);
+    return t;
   }
 
 
@@ -39,24 +42,38 @@ public class QueenBoard
   private boolean solveH( int col )
   {
     if (col == _size){
+      printSolution();
+      sols+=1;
       return true;
     }
     boolean solved = false;
     for (int i=0; i<_size; i++){
-      addQueen(i, col);
-      solved = solveH(col+1);
-      removeQueen(i, col);
+      if (addQueen(i, col)){
+        if (solveH(col+1)){
+          solved = true;
+        }
+        removeQueen(i, col);
+      }
     }
+    return solved;
   }
 
 
   public void printSolution()
   {
-    /** Print board, a la toString...
-        Except:
-        all negs and 0's replaced with underscore
-        all 1's replaced with 'Q'
-    */
+    String ans = "";
+    for( int r = 0; r < _board.length; r++ ) {
+      for( int c = 0; c < _board[0].length; c++ ) {
+        if (_board[r][c] != 1){
+          ans += "_" +"\t";
+        }
+        else{
+          ans += "Q" +"\t";
+        }
+      }
+      ans += "\n";
+    }
+    System.out.println(ans);
   }
 
 
@@ -167,6 +184,9 @@ public class QueenBoard
        0	0	0	0	0
     */
 
+    QueenBoard elizabeth = new QueenBoard(9);
+    elizabeth.printSolution();
+    elizabeth.solve();
   }
 
 }//end class
