@@ -7,6 +7,6 @@ public interface List{
 
 public class Node{
   private String car;
-  private boolean first;
+  private Node next;
   // private int index;
 }
