@@ -1,6 +1,7 @@
 import java.util.LinkedList;
 
-public class LLStack<PANCAKE>{
+public class LLStack<PANCAKE> implements Stack<PANCAKE> {
+  
   private LinkedList<PANCAKE> who;
 
   public LLStack(){
