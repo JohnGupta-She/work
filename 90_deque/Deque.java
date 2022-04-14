@@ -16,4 +16,3 @@ public interface Deque<KIWI> {
   public boolean removeFirstOccurrence(KIWI x);
   public boolean removeLastOccurrence(KIWI x);
 }
-
