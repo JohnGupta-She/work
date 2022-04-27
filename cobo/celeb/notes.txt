@@ -1,62 +1,64 @@
-// Team BrainForked (Gloria Lee, Jack Chen, Kevin)
-// APCS pd8
-// L09: Some Folks Call It A Charades
-// 2022-04-26t
-// time spent: 1.5 h
+Rin-Sensei: Rin Fukuoka, Julia Kozak, John Gupta-She
+APCS
+L09
+2022-04-06
+time spent: 3 hours
 
-DISCO:
-- create a distinction between the logic behind the code and the execution/functionality of it
-- This was a refresher on inheritance, subclasses, superclasses, super() and overriding methods 
-- Polymorphism = important concept 
+DISCO
+- GUI should be separated from the logic of the code as much as possible
+- Prioritize functionality before visuals/GUI
 
-QCC:
-- How 2 radio?
-- How 2 make GUI work?
-- Timer using sleep?
+QCC
+- How can we potentially incorporate time into the game?
+
 
 Activity 1
+1. We would have a "CelebrityGame" class to keep track of all the information in
+the game. We would also have a "Celebrity" class for each celebrity and another
+class to handle the GUI.
 
-1. Possible classes: Game class, Celebrity class, Player class
-2. Info that might be needed in game class: points of each team (to determine win),
-    a timer function, checking function, shuffle hat if needed, display current game info stats
-    (how many still in hat)
-3. Possible behavior/methods for Game class:
-    pickCeleb, setTimer, guess, updateScore, endRound, play, checkGuess
-4. updateScore, setTimer, or checkGuess would be made into methods. They have clear, useful
-    functions in the game and you can easily imagine what params they would take and what they would return
-5. the play method would first set a timer, then pick a celeb from hat, then prompt guessing until a correct celeb was found
-    or time ran out, updating the score with each celeb picked.
-6. No information/behavior would be necessary, but it would be helpful/logical that all objects would be able to return
-    a list of their attributes/behaviors like how you can get that from looking at an object in real life
+2. We need a list of celebrities in the "hat", and a clue for each celebrity. We also
+need players and a scoreboard.
+
+3. The game class must let players guess, tally the scoreboard, and choose/remove
+celebrities from the hat.
+
+4. We can create a guess() method, play() method, and choose and remove from hat methods.
+
+5. choose(), print clue(), guess(), tally the score, remove()
+
+6/7. Oranges.
+Information: color, sourness
+Behavior: grow, roll, rot, beEaten
+
 
 Activity 2
-1. A constructor in a class is code that is executed whenever a new instance of a class is made. Depending on the constructor,
-    it could include params that will be set as attributes for that object.
-2. Constructor heading: public ClassName(params if needed)
-3. name and description/clues
-4. returnName, returnDescription, answerCheck
-5. You might have two constructors because you first created a constructor with no parameters and then you
-    overrode it to create a constructor with parameters. The default constructor would look like public Celebrity(){}.
+1. It is meant to initialize instance variables and set up the instance of the
+class to run the game.
+2. It looks like public <className>(), and can take parameters that may be used
+to assign instance variable values.
+3. We need an instance variable for the celebrity name and clues to guess the name.
+4. It should include a method to take a guess, check if the guess is valid, check
+if the guess matches the answer, and reveal a clue.
+7. It has a single overloaded constructor that takes inputs for the answer and
+clues. We could also include a constructor public Celebrity(String answer) that
+would take only the name parameter and set a default clue.
+public Celebrity (String answer) {
+  this.answer = answer;
+  this.clue = "no clues for you";
+}
+
 
 Activity 3
-2. The celeb list would be private.
-3. The gameCelebrity should also be private
-12. The CelebrityGame class handles interaction with the Celebrity objects.
-13. The rest of the GUI only has knowledge of the Celebrity name/clue or whether or not
-    the given guess matched.
-    
+1.
+2. private ArrayList<Celebrity> celebGameList;
+3. private Celebrity gameCelebrity; //also private
+12. the CelebrityGame class contains all the methods that the GUI works with,
+and it handles the list of Celebrities.
+13. It can access the clue and answer from the current celebrity object.
+
 Activity 4
-
-1. ClassName: CelebrityActor
-    Attributes: Same as all other celebrities
-    Type: Celebrity
-    Behaviors: same as all other celebrities
-    Return Type: same as return type in Celebrity methods
-
-  17. We identify an overridden method if there is already an existing method of the same name 
-      in the parent class, but with different functionality/code. 
-  18. To send info from the subclass to the superclass, we can use get/set accessor methods to get and set 
-      any private instance variables of the subclass 
-  19. super() or extends
-  20. The method executed would be the superclass version of the method because 
-      java treats the subclass as the type of the ArrayList, which is the superclass.
+17. it says it before it @override
+18. use the method of the superclass by using super.<methodname>(<arguments>)
+19. extends
+20. it typecasts it so it can be added to the arraylist

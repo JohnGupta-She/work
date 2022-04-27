@@ -5,30 +5,24 @@ import java.util.ArrayList;
  * @author cody.henrichsen
  * @version 1.0 15/09/2018
  */
- // Team BrainForked (Gloria Lee, Jack Chen, Kevin)
- // APCS pd8
- // L09: Some Folks Call It A Charades
- // 2022-04-26t
- // time spent: 1.5 h
- 
-public class VideoGameCelebrity extends Celebrity
+public class SingerCelebrity extends Celebrity
 {
 	/**
-	 * The list of clues for the Literature Celebrity. They can be titles of texts, important characters, settings, etc...s
+	 * The list of clues for the Singer Celebrity.
 	 */
 	private ArrayList<String> clueList;
 
 	/**
 	 * Builds a LiteratureCelebrity instance with an answer and a series of clues as a String separated by commas.
 	 * @param answer The literature celebrity
-	 * @param clues Clues for the literature celebrity 
+	 * @param clues Clues for the literature celebrity
 	 */
-	public VideoGameCelebrity(String answer, String clues)
+	public SingerCelebrity(String answer, String clues)
 	{
 		super(answer, clues);
 		processClues();
 	}
-	
+
 	/**
 	 * Processes the series of clues for the LiteratureCelebrity by adding all the values to an ArrayList<String> by
 	 * splitting the original clue to an array of String.
@@ -43,7 +37,7 @@ public class VideoGameCelebrity extends Celebrity
 			clueList.add(currentClue);
 		}
 	}
-	
+
 	/**
 	 * Overridden version of the getClue() method that cycles through each of the individual clues in the series.
 	 * It recreates the clueList if the user has finished the series of clues.
@@ -56,21 +50,21 @@ public class VideoGameCelebrity extends Celebrity
 			processClues();
 		}
 		String currentClue = clueList.remove(0);
-		
+
 		return currentClue;
 	}
-	
+
 	
 	@Override
 	public String toString()
 	{
-		String dsc = "This is the video game celebrity: " + getAnswer() + "\nThe clues are:\n";
-		
+		String dsc = "This is the singer celebrity: " + getAnswer() + "\nThe clues are:\n";
+
 		for (String word : super.getClue().split(","))
 		{
 			dsc += word + "\n";
 		}
-		
+
 		return dsc;
 	}
 

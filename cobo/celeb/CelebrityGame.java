@@ -1,8 +1,3 @@
-// Team BrainForked (Gloria Lee, Jack Chen, Kevin)
-// APCS pd8
-// L09: Some Folks Call It A Charades
-// 2022-04-26t
-// time spent: 1.5 h
 import java.util.ArrayList;
 
 /**
@@ -13,10 +8,19 @@ import java.util.ArrayList;
  */
 public class CelebrityGame
 {
+	/**
+	 * A reference to a Celebrity or subclass instance.
+	 */
 	private Celebrity gameCelebrity;
 
-	 private CelebrityFrame gameWindow;
+	/**
+	 * The GUI frame for the Celebrity game.
+	 */
+  private CelebrityFrame gameWindow;
 
+	/**
+	 * The ArrayList of Celebrity values that make up the game
+	 */
 	private ArrayList<Celebrity> celebGameList;
 
 	/**
@@ -24,8 +28,8 @@ public class CelebrityGame
 	 */
 	public CelebrityGame()
 	{
-		celebGameList = new ArrayList<Celebrity>();
 		gameWindow = new CelebrityFrame(this);
+		celebGameList = new ArrayList<>();
 	}
 
 	/**
@@ -47,14 +51,11 @@ public class CelebrityGame
 	 */
 	public boolean processGuess(String guess)
 	{
-		String clue = guess.trim();
-		if(clue.equalsIgnoreCase(gameCelebrity.getAnswer())){
-			celebGameList.remove(celebGameList.size()-1);
-			if(celebGameList.size()==0){
-				gameCelebrity = new Celebrity("","");
-			}else{
-				gameCelebrity = celebGameList.get(celebGameList.size()-1);
-			}
+		guess = guess.trim();
+		if (guess.equalsIgnoreCase(sendAnswer())) {
+			celebGameList.remove(0);
+			if (celebGameList.size() > 0) gameCelebrity = celebGameList.get(0);
+			else gameCelebrity = new Celebrity("", "");
 			return true;
 		}
 		return false;
@@ -68,8 +69,8 @@ public class CelebrityGame
 	public void play()
 	{
 		if (celebGameList != null && celebGameList.size() > 0) {
-			this.gameCelebrity = celebGameList.get(0); 
-			gameWindow.replaceScreen("GAME"); 
+			this.gameCelebrity = celebGameList.get(0);
+			//gameWindow.replaceScreen("GAME");
 		}
 	}
 
@@ -85,23 +86,12 @@ public class CelebrityGame
 	 */
 	public void addCelebrity(String name, String guess, String type)
 	{
-		Celebrity currentCelebrity;
-		if (type.equals("Literature")) {
-			currentCelebrity = new LiteratureCelebrity(name, guess);
-		}
-		else if (type.equals("VideoGame")) {
-			currentCelebrity = new VideoGameCelebrity(name, guess); 
-		}
-		else {
-			currentCelebrity = new Celebrity(name, guess);
-		}
-		this.celebGameList.add(currentCelebrity); 
-		
-		// if(validateClue(guess, type)&& validateCelebrity(name)){
-		// 	Celebrity newCeleb = new Celebrity(name, guess);
-		// 	celebGameList.add(newCeleb);
-		// }
-		
+		Celebrity temp;
+		if (type.equals("Literature")) {temp = new LiteratureCelebrity(name, guess);}
+		else if (type.equals("Singer")) {temp = new SingerCelebrity(name, guess);}
+		else {temp = new Celebrity(name, guess);}
+
+		celebGameList.add(temp);
 	}
 
 	/**
@@ -111,7 +101,10 @@ public class CelebrityGame
 	 */
 	public boolean validateCelebrity(String name)
 	{
-		return name.trim().length()>=4;
+		name = name.trim();
+		if (name.length() < 4) return false;
+
+		return true;
 	}
 
 	/**
@@ -123,30 +116,34 @@ public class CelebrityGame
 	 */
 	public boolean validateClue(String clue, String type)
 	{
-		boolean validClue = false; 
-		if (clue.trim().length()>=10) {
-			validClue = true; 
+		/*clue = clue.trim();
+		if (clue.length() < 10) return false;
+
+		return true;*/
+
+		boolean validClue = false;
+		if (clue.trim().length() >= 10) {
+			validClue = true;
 			if (type.equalsIgnoreCase("literature")) {
-				String temp[] = clue.split(","); 
+				String[] temp = clue.split(",");
 				if (temp.length > 1) {
 					validClue = true;
-				}
-				else {
+				} else {
 					validClue = false;
 				}
-			}
-			if (type.equalsIgnoreCase("videogame")) {
-				String temp[] = clue.split(","); 
+			} else if (type.equalsIgnoreCase("singer")) {
+				String[] temp = clue.split(",");
 				if (temp.length > 1) {
 					validClue = true;
-				}
-				else {
+				} else {
 					validClue = false;
 				}
+			} else {
+				if (clue.length() < 10) {validClue = false;}
+				else {validClue = true;}
 			}
 		}
-			return validClue; 
-			// return clue.trim().length()>=10;
+		return validClue;
 
 	}
 

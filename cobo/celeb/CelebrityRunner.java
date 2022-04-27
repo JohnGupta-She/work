@@ -3,13 +3,6 @@
  * @author cody.henrichsen
  *
  */
- 
- // Team BrainForked (Gloria Lee, Jack Chen, Kevin)
- // APCS pd8
- // L09: Some Folks Call It A Charades
- // 2022-04-26t
- // time spent: 1.5 h
- 
 public class CelebrityRunner
 {
 	/**
@@ -18,6 +11,7 @@ public class CelebrityRunner
 	 */
 	public static void main(String [] args)
 	{
-		
+		CelebrityGame test = new CelebrityGame(); 
+
 	}
 }
