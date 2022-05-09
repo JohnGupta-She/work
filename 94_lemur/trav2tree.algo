@@ -1,0 +1,104 @@
+Rin-Sensei: Julia Kozak, Rin Fukuoka, John Gupta-She
+APCS pd08
+HW94 -- reverse engineering
+2022-05-06f
+time spent: 0.7hrs
+
+
+DISCO
+------------------------------------------------
+* Given pre and post-order, there is no way to know which side a branch is on
+  for any given node with one child.
+* A given traversal of length n can correspond to any binary tree of n nodes.
+* Balanced/perfect/completeness are important here because then your
+  constructions of trees are roughly logarithmic/nlogn time.
+================================================
+
+
+QCC
+------------------------------------------------
+* Is it correct to think this is a bit like quick sort?
+* In the case of pre and post, does the fact that we don't know the side of each
+  single branch affect anything? When does left justification matter?
+================================================
+
+
+HOW KEEN ARE YOUR POWERS OF OBSERVATION?
+------------------------------------------------
+Q: For a given binary tree, how many unique pre-order traversals are there?
+A: There is one. For each node, there is a unique order in which you will
+   process its children and itself.
+
+Q: For a given binary tree, how many unique in-order traversals are there?
+A: Also one, for same reason.
+
+Q: For a given binary tree, how many unique post-order traversals are there?
+A: Also one, same reason.
+
+Q: For a given traversal, how many unique trees could have produced it?
+A: For a tree of n nodes, it is all possible arrangements of a binary tree with
+   unlabeled nodes (nth Catalan number :o) because for any tree with n nodes,
+   there is a unique traversal that we can run through and label the vertices
+   with the corresponding values that show up in the given list.
+
+Q: Given a pre-order traversal, what can you infer about its tree?
+A: You can determine the root to be the first element. You also know that the
+   following element is a child of it, but you don't know which side or where
+   any other element is.
+
+Q: Given a post-order traversal, what can you infer about its tree?
+A: You know that the root is the last element, and the second to last element
+   is one of its children.
+
+Q: What does "1-to-1" mean?
+A: In a mapping, it means no two elements map to the same value.
+
+Q: What does "onto" mean?
+A: In a mapping, it means each element in the codomain is attained.
+
+================================================
+
+
+ALGO for pre and in
+------------------------------------------------
+givens: pre-order traversal, in-order traversal.
+
+procedure: Look at the first element in your pre-order traversal. This is the
+root (draw it). Look for that vertex's position in the in-order traversal.
+Everything to the left of it in in-order is in its right branch, and everything
+to the right is in the right branch. Now ignore the root and partition each
+traversal into its two branches, the in-order at your root and the pre-order
+at the point where all and only elements in the left branch are to the left of
+your partition. Repeat on the two partitions until each branch is complete.
+
+================================================
+
+
+ALGO for post and in
+------------------------------------------------
+givens: post-order traversal, in-order traversal.
+
+procedure: Look at the last element in your post-order traversal, which is the
+root. Look for its position in the in-order traversal. Everything to the left
+is in the root's left branch, and to the right is in the right branch. Ignore
+the root in both traversals and partition each into two sequences, one
+containing the nodes of the left branch and the other the right. Repeat on the
+two traversals for each branch.
+
+================================================
+
+
+ALGO for pre and post
+------------------------------------------------
+givens: pre-order traversal, post-order traversal.
+
+procedure: Look at the first element of your pre-order, which is the root. This
+is also the last element in post-order. Then, look at the second element in pre-
+order, and its place in post-order. If it is second to last in post-order, then
+the root only has one child (this node), which can be placed on either side.
+Otherwise, it is on the left. Ignore the root and partition your post-order
+into everything to the left of the second node (including node) and everything
+to the right. And partition pre-order to include the same vertices in each part,
+then repeat for the two branches.
+
+================================================
